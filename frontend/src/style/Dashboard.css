@@ -1,0 +1,290 @@
+.dashBoard{
+    background:#0f0f0f;
+    display: flex;
+    /* gap: 40px; */
+}
+.DashNavWrap{
+    height: 100vh;
+    background: rgb(0, 0, 0);
+    width: 250px;
+}
+
+.DashNavWrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+    position: fixed;
+}
+.DashNavWrap img{
+    width: 180px;
+}
+
+.dashDisplay{
+    width: 100%;
+    padding-top: 48px;
+    color: white;
+    min-height: 100vh;
+    padding-left: 230px;
+}
+
+
+.dd-button a{
+    color: white;
+    display: block;
+}
+.links-DD{
+    padding: 70px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-direction: column;
+}
+.dd-button {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-radius: 13px;
+    width: 210px;
+    padding: 10px 19px;
+    opacity: 0.9;
+    transition: 0.2s;
+
+}
+
+.acitve{
+    background: rgb(29, 29, 29);
+    border-radius: 13px;
+    width: 220px;
+    padding: 10px 19px;
+    opacity: 1;
+    transition: 0.2s;
+
+}
+.dd-button:hover {
+    background: rgb(12, 12, 12);
+    width: 220px;
+    opacity: 0.9;
+    transition: 0.2s;
+}
+.dd-button a{
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+}
+.box-DD{
+    height: 25px ;
+    width: 25px ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background: yellow; */
+}
+a{
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+
+}
+
+.DD-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0  50px;
+}
+
+.DD-texts h1{
+    font-size: 2rem;
+}
+.icon-DD{
+    height: 25px ;
+    width: 25px ;
+    /* background: yellow; */
+}
+.userIcon{
+    height: 50px ;
+    width: 50px ;
+    background: black;
+    border-radius: 100000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding: 20px; */
+}
+.search-DD{
+    display: flex;
+    gap: 3px;
+    background: black;
+    padding: 10px 18px;
+    border-radius: 10000px;
+}
+.search-DD input{
+    padding: 0 15px;
+    border: none;
+    outline: none;
+    background: none;
+    color: white;
+    font-size: 1rem;
+}
+.search-DD input{
+    width: 200px;
+
+}
+.others{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+.box-DD svg{
+    /* width: 100%; */
+}
+
+.DB-Home{
+    padding: 40px 50px 0;
+}
+.topSection-DB{
+    display: flex;
+    gap: 30px;
+}
+.ammount-DD{
+    background: white;
+    color: black;
+    min-width: 180px;
+    height: 160px;
+    padding: 20px;
+    border-radius: 10px;
+}
+.referrals-DD{
+    background: white;
+    color: black;
+    min-width: 180px;
+    height: 160px;
+    padding: 20px;
+    border-radius: 10px;
+}
+.referrals-DD h1{
+    font-size: 3rem;
+    margin: -8px 0 0;
+}
+
+.depositAddress{
+    padding-top: 50px;
+
+}
+.depositAddress p {
+    padding-bottom: 20px;
+}
+.DA-wrap-button{
+    display: flex;
+    justify-content: space-between;
+}
+.DA-wrap-button button{
+    margin: 2px 10px;
+    cursor: pointer;
+}
+
+.DB-Home .contactgrid .contact-grid-item{
+    background: rgb(54, 54, 54);
+    width: 250px;
+    color: white;
+    padding: 20px 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 10px;
+}
+.DB-Home .contactgrid {
+    padding: 50px 30px 00;
+}
+.DB-Home .contactgrid .contact-grid-contain{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.Transcations{
+    margin-top: 60px;
+}
+.histories-Trans{
+    display:flex;
+    width: 100%;
+    background: white;
+    color:black;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 35px;
+    border-radius: 20px;
+}
+.info-trans{
+    display: flex;
+    align-items: center;
+}
+.fullInfo-trans .trans-header{
+    font-size: 1.3rem;
+    margin: 0;
+    font-weight: 700;
+}
+.fullInfo-trans .status{
+    font-size: 1rem;
+    margin: 0;
+    font-weight: 600;
+}
+.iconTrans{
+    height: 45px;
+    width: 45px;
+    background: black;
+    border-radius: 300px;
+    margin-right: 20px;
+}
+.wrap-Tras{
+    display: flex;
+    margin-top: 40px;
+    flex-direction: column;
+    gap: 28px;
+    padding:10px 30px 90px;
+}
+
+.DB-Home .investmentgrid{
+    display: flex
+}
+
+.prompt{
+    position: fixed;
+    z-index: 50px;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.879);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    left: 0;
+}
+
+.pp-box{
+    background: rgb(21, 21, 21);
+    border-radius: 20px;
+    padding: 30px 40px;
+    display: flex;
+    flex-direction : column;
+    gap: 20px;
+}
+.pp-box button{
+    cursor: pointer;
+}
+.pp-box button:hover{
+    background: black;
+    color: white;
+}
+.pp-addr{
+    margin: 23px 5px 5px;
+    padding: 3px;
+    border-radius: 30px;
+    background: white;
+    color: black;
+}
+.pp-text{
+    padding-top: 8px;
+
+    font-size: 1rem;
+}

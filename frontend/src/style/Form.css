@@ -1,0 +1,110 @@
+.sign{
+    display: flex;
+    align-items: center;
+    background-color: black;
+    height: 79.5vh;
+    /* color: white; */
+}
+.sign .header{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    background-color: #fff;
+
+}
+.signWrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    zoom: 88%;
+    height: 100vh;
+    width: 100%;
+
+}
+.SignIn{
+    padding:70px 40px 50px;
+    border-radius: 20px;
+    display : flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    width: fit-content;
+    color: white;
+}
+.splitWrap{
+    /* display: flex; */
+    gap: 40px;
+}
+.SignUp{
+    padding:70px 40px 50px;
+    border-radius: 20px;
+    display : flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* background-color: black; */
+    width: fit-content;
+    color: white;
+}
+.SignBox{
+    display : flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    gap: 20px;
+}
+.wrapInput{
+    padding-top: 20px;
+}
+.wrapInput input{
+    height: 30px;
+    width: 330px;
+    border: none;
+    border: 2px solid white;
+    border-radius: 8px;
+    background: none;
+    outline: none;
+    padding: 20px 15px;
+    display: block;
+    font-size: 15px;
+}
+.wrapInput input{
+    color: white;
+}
+.wrapInput a{
+    display: block;
+    text-align: right;
+    font-size: 16px;
+    color: white;
+} 
+button{
+    background: white;
+    color: black;
+} 
+.bottomText{
+    font-size: 16px;
+} 
+.bottomText a{
+    color: yellow;
+} 
+.buttonForm{
+    margin-top: 20px;
+}
+.lastPassword{
+    /* margin-top: 56.5px; */
+}
+#CountryForm{
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 2px solid white;
+}
+@media screen and (max-width: 800px) {
+    .splitWrap{
+        display: block;
+        gap: 40px;
+    }
+}

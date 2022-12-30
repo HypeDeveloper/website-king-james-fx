@@ -1,0 +1,79 @@
+.Admin-sec{
+    min-height: 100vh;
+
+}
+.topperSec{
+    color:white;
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    padding: 20px 60px 0 40px;
+}
+.topperSec img{
+    width: 200px;
+}
+.topperSec p{
+    font-size :1.3rem;
+}
+
+.top-ad-sec{
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    padding: 20px 120px 0 100px;
+    height: fit-content;
+}
+.links a{
+    color: white;
+    font-size: 1.2rem;
+
+}
+.top-ad-sec .active{
+    border-bottom: 3px solid white;
+    /* color: black; */
+    padding: 15px 40px 10px;
+    font-weight: 700;
+}
+
+.users{
+    color: white;
+    padding: 70px 80px 80px;
+    zoom: 80%;
+}
+
+.userWrap{
+    background: rgb(28, 28, 28);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    border-radius: 15px;
+}
+.LogWrap{
+    padding: 45px 30px;
+
+}
+.userWrap:hover{
+    background: rgb(44, 44, 44);
+}
+.user-icon{
+    height: 50px;
+    width: 50px;
+    border-radius: 400px;
+    background: black;
+}
+.user-info-ad h1{
+    font-size: 1.8rem;
+}
+.user-info-ad p{
+    font-size: 1.2rem;
+}
+.info-user{
+    display: flex;
+    align-items: center;
+    gap: 20px
+}
+.del-user:hover{
+    background: red;
+    color: white
+}
