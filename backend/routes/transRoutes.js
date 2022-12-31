@@ -12,13 +12,14 @@ const { protect, protectAdmin } = require("../middleware/authMiddleware");
 // /transfare
 // /transfare/newTrans
 // /transfare/transUpdate
-router.get("/", protect, getAllTransfaresUser);
-router.post("/newTrans", protect, createTransfare);
-router.post("/transUpdate", protect, updateTransfareOrder);
+router.get("/transfare/", protect, getAllTransfaresUser);
+router.post("/transfare/newTrans", protect, createTransfare);
+
+router.post("/transfare/transUpdate", protect, updateTransfareOrder);
 
 
 //   /transfare/admin
-router.get("/admin", protectAdmin, getAllTransfaresAdmin);
+router.get("/transfare/admin", protectAdmin, getAllTransfaresAdmin);
 
 
 module.exports = router;

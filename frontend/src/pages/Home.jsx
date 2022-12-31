@@ -15,19 +15,20 @@ import walletImg from "../assets/img/wallet-interest.png";
 import mid from "../assets/img/mid001.png";
 import hs5 from "../assets/img/hs5.png";
 import sh8 from "../assets/img/sh8.png";
-import { Auth, useAuth } from "../AuthManger/AuthContext";
-import { authService } from "../AuthManger/AuthService";
+import {  useAuth } from "../AuthManger/AuthContext";
+import {authService}  from "../AuthManger/AuthService";
 
 export function Index() {
     return <Outlet />;
 }
 
 export function Home() {
-    const {  user }: Auth = useAuth();
+    const {  user } = useAuth();
     const navigate = useNavigate();
 
     useEffect(()=>{
-        if(authService.getLogedInUser() !== null){
+        console.log(user)
+        if (authService.logedUser() !== null){
             navigate('/dashboard')
         }
     },[user])
@@ -354,7 +355,7 @@ function HomeBody() {
     );
 }
 export function NavBar() {
-    const navId: any = useRef();
+    const navId = useRef();
 
     function openNav() {
         navId.current.style.width = "100%";

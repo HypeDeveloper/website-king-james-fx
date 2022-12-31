@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Auth, useAuth } from "../AuthManger/AuthContext";
-import { authService } from "../AuthManger/AuthService";
+import { useAuth } from "../AuthManger/AuthContext";
+import {authService} from "../AuthManger/AuthService";
 import {NavBar } from "./Home"
 
 export function SignIn() {
@@ -9,27 +9,26 @@ export function SignIn() {
         email: '',
         password: ''
     })
-    const { AuthUser, isLoading, isSuccess, Reset }: Auth = useAuth();
+    const { AuthUser, isSuccess, user,  }= useAuth();
     const navigate = useNavigate();
 
 
 
     useEffect(()=>{
-        if (authService.getLogedInUser() !== null) {
+        if (user) {
             navigate("/dashboard/");
         }
     },[])
     useEffect(() => {
         if (isSuccess) {
-            console.log("Registered");
-            Reset ? Reset() : null;
+            console.log("Registered");  
             navigate("/dashboard");
         }
     }, [isSuccess]);
 
     const { email, password } = loginData;
 
-    const submit = (e:any) => {
+    const submit = (e) => {
         e.preventDefault()
         if (email === "" || password === "") {
             alert('No email or password')
@@ -43,7 +42,7 @@ export function SignIn() {
         AuthUser? AuthUser(userData): null;
     }
 
-    const onChange = (e: any) => {
+    const onChange = (e) => {
         setLogInData((prevState) => ({
             ...prevState,
             [e.target.name]:e.target.value

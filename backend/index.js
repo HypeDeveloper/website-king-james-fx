@@ -14,19 +14,19 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors())
 
 // route for users
-app.use('/api/users', require('./routes/userRouts'))
+app.use('/api', require('./routes/userRouts'))
 //  route fo Admin
-app.use('/api/admin', require('./routes/adminRoutes'))
-app.use("/api/transfare", require("./routes/transRoutes"));
+app.use('/api', require('./routes/adminRoutes'))
+app.use("/api", require("./routes/transRoutes"));
 
 app.use(errHandler);
 
 
-// serve Frontend
+// pack Frontend
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../frontend/king-james-fx/dist')))
+    app.use(express.static(path.join(__dirname, '../frontend/dist')))
     app.get('*', (req, res)=>{
-        res.sendFile(path.resolve(__dirname, '../', 'frontend', 'king-james-fx', 'dist', 'index.html'))
+        res.sendFile(path.resolve(__dirname, '../', 'frontend', 'dist', 'index.html'))
     })
 } 
 else {
@@ -34,6 +34,7 @@ else {
         res.send('Set env to production');
     })
 }
+
 
 connectDB();
 app.listen(port, () => {

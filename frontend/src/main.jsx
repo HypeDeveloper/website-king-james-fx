@@ -12,11 +12,11 @@ import { About, Support} from './pages/Others'
 import PageNotFound from './pages/404'
 import './style/Home.css'
 import { Admin } from './pages/Admin';
-import { Auth, AuthContextProvider, useAuth } from './AuthManger/AuthContext';
-import { authService } from './AuthManger/AuthService';
+import {  AuthContextProvider, useAuth } from './AuthManger/AuthContext';
+import {authService}  from './AuthManger/AuthService';
 
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
         <AuthContextProvider>
             <App />

@@ -3,24 +3,36 @@ import "../style/Dashboard.css";
 
 import kingLogo from "../assets/img/kinglogo.png";
 import { useEffect, useRef, useState } from "react";
-import { authService } from "../AuthManger/AuthService";
-import { Auth, useAuth } from "../AuthManger/AuthContext";
+import {authService}  from "../AuthManger/AuthService";
+import { useAuth } from "../AuthManger/AuthContext";
 
 export function Dashboard() {
-    const [data, setData] = useState()
     const nav = useNavigate();
 
+    const { GetUser_DB } = useAuth()
+    const [isData, setData] = useState()
+    let DATA_NEW
+    let localData = authService.logedUser()
 
     useEffect(() => {
-        console.log(authService.getLogedInUser());
-        authService.getLogedInUser()
-            ? (setData(authService.getLogedInUser()))
+        data()
+    }, [isData])
+    useEffect(() => {
+        localData
+            ? (setData(localData))
             : nav("/signIn");
 
-        
+        console.log(localData)
 
-    }, [[], authService.getLogedInUser()]);
+    }, []);
 
+    let data = async () => {
+        await GetUser_DB().then((d) => {
+            if (d) {
+                setData(d)
+            }
+        })
+    }
 
     
 
@@ -32,7 +44,7 @@ export function Dashboard() {
                     <div className="DD-top">
                         <div className="DD-texts">
                             <p>Welcome back,</p>
-                            <h1>{authService.getLogedInUser().fullName}</h1>
+                            <h1>{isData ? isData.fullname : authService.logedUser().fullName}</h1>
                         </div>
                         <div className="others">
                             <div className="search-DD">
@@ -100,8 +112,7 @@ function DashBoardNav() {
                             className={`dd-button ${
                                 activeUrl === " "
                                     ? "acitve"
-                                    : document.location.href.split("/")[3] ===
-                                      "dashboard"
+                                    : document.location.href.split("/").length === 3
                                     ? "active"
                                     : ""
                             }`}
@@ -223,18 +234,33 @@ function DashBoardNav() {
     );
 }
 
-export function DashBoardHome() {
+export function DashBoardHome() {  
+    const { GetUser_DB } = useAuth()
+    const [ isData, setData] = useState()
+    let DATA_NEW
+
+    useEffect(() => {
+        data()
+    }, [isData])
+
+    let data = async () => {
+        await GetUser_DB().then((d) => {
+            if (d) {
+                setData(d)
+            }
+        })
+    }
     return (
         <>
             <div className="DB-Home">
                 <div className="topSection-DB">
                     <div className="ammount-DD">
                         <p> Total Income</p>
-                        <h1>@addAmount</h1>
+                        <h1>{isData ? isData.amount : 'loading..'}</h1>
                     </div>
                     <div className="referrals-DD">
                         <p>Total Referals</p>
-                        <h1>@addReferals</h1>
+                        <h1>0</h1>
                     </div>
                 </div>
                 <TransactionsBoard />
@@ -320,7 +346,21 @@ export function Transactions() {
         body: <></>,
         button: "",
     });
+    const { GetUser_DB } = useAuth()
+    const [isData, setData] = useState()
+    let DATA_NEW
 
+    useEffect(() => {
+        data()
+    }, [isData])
+
+    let data = async () => {
+        await GetUser_DB().then((d) => {
+            if (d) {
+                setData(d)
+            }
+        })
+    }
     const copyToBoard = () => {
         setShowPrompt((showPrompt) => false);
         alert("Address copied");
@@ -401,7 +441,7 @@ export function Transactions() {
                 <div className="topSection-DB">
                     <div className="ammount-DD">
                         <p> Total Income</p>
-                        <h1>@add Amount</h1>
+                        <h1>{isData? isData.amount: 'loading...'}</h1>
                     </div>
                 </div>
                 <div className="depositAddress">
@@ -429,12 +469,52 @@ export function Transactions() {
 }
 
 function TransactionsBoard() {
+    const { GetUser_Transfares } = useAuth()
+    const [isData, setData] = useState([])
+    let DATA_NEW
+    let TRANS
+
+    useEffect(() => {
+        data()
+    }, [isData])
+
+    let data = async () => {
+        await GetUser_Transfares().then((d) => {
+            if (d) {
+                setData(d)
+                if (isData !== []) {
+                    TRANS = isData.map((e) => {
+                        return (
+                            <div className="histories-Trans">
+                                <div className="info-trans">
+                                    <div className="iconTrans"></div>
+                                    <div className="fullInfo-trans">
+                                        <p className="trans-header">Deposit</p>
+                                        <p className="status">{e.status}</p>
+                                    </div>
+                                </div>
+                                <div className="otherInfo-trans">
+                                    <div className="users-trans-date">
+                                        <p>--</p>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })
+                }
+            }
+        })
+    }
+        
+
+    
+
     return (
         <div className="Transcations">
             <h2>Transfare History</h2>
-
             <div className="wrap-Tras">
-                <div className="histories-Trans">
+                {isData.length !== 0 ? TRANS : 'No transactions yet'}
+                {/* <div className="histories-Trans">
                     <div className="info-trans">
                         <div className="iconTrans"></div>
                         <div className="fullInfo-trans">
@@ -447,39 +527,19 @@ function TransactionsBoard() {
                             <p>20th January 2022</p>
                         </div>
                     </div>
-                </div>
-
-                <div className="histories-Trans">
-                    <div className="info-trans">
-                        <div className="iconTrans"></div>
-                        <div className="fullInfo-trans">
-                            <p className="trans-header">Deposit</p>
-                            <p className="status">pending</p>
-                        </div>
-                    </div>
-                    <div className="otherInfo-trans">
-                        <div className="users-trans-date">
-                            <p>20th January 2022</p>
-                        </div>
-                    </div>
-                </div>
+                </div> */}
             </div>
         </div>
     );
 }
 
-function PromptOverlay(props: {
-    click: any;
-    close: any;
-    clickMsg: string;
-    msgTemplate: JSX.Element;
-}) {
+function PromptOverlay(props) {
     return (
         <>
             <div className="prompt" onClick={props.close}>
                 <div className="pp-box">
                     <h1>
-                        Hi, {authService.getLogedInUser().userData.fullname}
+                        Hi, {authService.logedUser().fullname}
                     </h1>
                     <p>{props.msgTemplate || "body"}</p>
                     <button onClick={props.click}>

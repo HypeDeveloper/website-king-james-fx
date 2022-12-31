@@ -8,9 +8,9 @@ const {
 } = require("../controller/adminController");
 const {protectAdmin} = require("../middleware/authMiddleware");
 
-router.post("/", createToken);
-router.post("/login", loginAdmin);
+router.post("/admin/", createToken);
+router.post("/admin/login", loginAdmin);
 
-router.delete("/user/delete", protectAdmin, deleteUser);
+router.delete("/admin/user/delete", protectAdmin, deleteUser);
 
 module.exports = router;

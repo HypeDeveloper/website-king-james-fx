@@ -3,7 +3,7 @@ import "../style/Admin.css";
 
 import kingLogo from "../assets/img/kinglogo.png";
 import { useRef, useState } from "react";
-import { Auth, useAuth } from "../AuthManger/AuthContext";
+import { useAuth } from "../AuthManger/AuthContext";
 
 export function Admin() {
     return (
@@ -16,14 +16,14 @@ export function Admin() {
 
 
 function SignAdmin() {
-    const adSign:any = useRef()
-    const { AuthToken }:Auth= useAuth();
+    const adSign = useRef()
+    const { AuthToken }= useAuth();
     const [formData, setFormData] = useState({
         owner: '',
         token: '',
     })
     const { token, owner } = formData;
-    const submit = (e: any) => {
+    const submit = (e) => {
         e.preventDefault()
         if (token === "" || owner === "") {
             alert("No token");
@@ -37,7 +37,7 @@ function SignAdmin() {
             adSign.current.style.display = 'none'
         }) : null;
     }
-    const change = (e:any) => {
+    const change = (e) => {
         setFormData((preData) => ({
             ...preData,
             [e.target.name] : e.target.value

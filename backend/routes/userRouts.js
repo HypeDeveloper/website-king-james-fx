@@ -9,14 +9,14 @@ const {
 const { protect, protectAdmin } = require("../middleware/authMiddleware");
 
 // /users
-router.post("/", registerUser);
+router.post("/users/", registerUser);
 // /users/login
-router.post("/login", loginUser);
+router.post("/users/login", loginUser);
 // /users/me
-router.get("/me",protect, getUserData)
+router.get("/users/me",protect, getUserData)
 
 //   /users/admin/users
-router.get("/admin/users", protectAdmin, getAllUsers);
+router.get("/users/admin/users", protectAdmin, getAllUsers);
 
 
 

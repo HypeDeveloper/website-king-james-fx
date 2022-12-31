@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { NavBar } from "./Home"
-import { Auth, useAuth } from "../AuthManger/AuthContext";
+import { useAuth } from "../AuthManger/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 export function SignUp() {
-    const FormOne:any = useRef()
-    const FormThree: any = useRef();
+    const FormOne = useRef()
+    const FormThree = useRef();
     const [formData, setFormData] = useState({
         userName: "",
         fullName: "",
@@ -15,7 +15,7 @@ export function SignUp() {
         confirmPassword: "",
         inviteCode:""
     });
-    const { RegisterUser, isLoading, isSuccess, Reset }: Auth = useAuth();
+    const { RegisterUser, isLoading, isSuccess, Reset } = useAuth();
     const navigate = useNavigate()
     useEffect(() => {
         if (isSuccess) {
@@ -52,7 +52,7 @@ export function SignUp() {
         FormOne.current.style.display = "none";
         FormThree.current.style.display = "flex";
     };
-    const submit = (e:any) => {
+    const submit = (e) => {
         e.preventDefault()
 
         if (password !== confirmPassword) {
@@ -71,7 +71,7 @@ export function SignUp() {
         }
     }
     
-    const onChange = (e: any) => {
+    const onChange = (e) => {
         setFormData((prevData) => ({
             ...prevData,
             [e.target.name]:e.target.value
@@ -173,7 +173,7 @@ export function SignUp() {
                         
 
                         {/* Third Form */}
-                        <div className="SignUp" ref={FormThree}>
+                        <div className="SignUp" ref={FormThree} style={{ display: "none" }}>
                             <h1>Secure Your Account</h1>
                             <p>Setup a strong password for your account</p>
                             <div className="SignBox">
