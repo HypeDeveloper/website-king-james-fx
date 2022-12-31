@@ -1,11 +1,16 @@
 const Trans = require("../model/transcationModel");
 const User = require("../model/userModel");
+const Admin = require("../model/adminModel");
 const asyncHandler = require("express-async-handler");
 const jwt = require("jsonwebtoken");
 
 
 const getAllTransfaresAdmin = asyncHandler(async (req, res) => {
-    console.log(req.user.id);
+    const admin = Admin.findById(req.user.id)
+    if (!admin) {
+        res.status(400);
+        throw new Error("No access right");
+    }
     const trans = await Trans.find();
 
     res.status(200).json(trans);

@@ -32,13 +32,6 @@ const logedUser = () => {
 const logout = () => {
     localStorage.removeItem('user')
 }
-
-const token = async (userData) => {
-    await axios.post(fetchUrl + "/admin/login", userData).then((res) => {
-        return res.data;
-    });
-};
-
 // users requests
 // get me
 const getMe = async (token) => {
@@ -74,8 +67,8 @@ const getUserTransfare = async (token) => {
     })
     return DATA_ME
 };
-//  create a transfare
-const createTransfare = async (typeOFTransfare,token) => {
+//  get a transfare
+const geAlltUserTransfares = async (typeOFTransfare,token) => {
     const config = {
         headers: {
             Authorization: `Bearer ${token}`,
@@ -91,6 +84,118 @@ const createTransfare = async (typeOFTransfare,token) => {
     })
     return DATA_ME
 };
+//  create a transfare
+const createATransfare = async (typeOFTransfare, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    };
+
+    let DATA_ME
+
+    await axios.post(fetchUrl + "/transfare/newTrans", typeOFTransfare, config).then((res) => {
+        if (res.data) {
+            DATA_ME = res.data
+        }
+    })
+    return DATA_ME
+};
+
+
+
+// Trasn End Points
+
+
+
+// Admin End Points
+const token = async (userData) => {
+    let DATA_ADMIN
+
+    await axios.post(fetchUrl + "/admin/login", userData).then((res) => {
+
+        if (res.data) {
+            DATA_ADMIN = res.data
+        }
+    });
+    return DATA_ADMIN
+};
+// Get Users Admin
+const getUsersAdmin = async (token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    };
+
+    let DATA_ADMIN
+
+    await axios.get(fetchUrl + "/users/admin/users", config).then((res) => {
+        if (res.data) {
+            DATA_ADMIN = res.data
+        }
+    })
+    return DATA_ADMIN
+};
+// Delete User Admin
+const deleteUserAdmin = async (deletData,token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    };
+    
+
+    let DATA_ADMIN
+
+    await axios.get(fetchUrl + "/admin/users/all", deletData,config).then((res) => {
+        if (res.data) {
+            DATA_ADMIN = res.data
+        }
+    })
+    return DATA_ADMIN
+};
+
+
+// GEt all Transfares
+const getAllTransDBAdmin = async (token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    };
+    const body={
+        id: _id
+    }
+
+    let DATA_ADMIN
+
+    await axios.get(fetchUrl + "/transfare/admin", body,config).then((res) => {
+        if (res.data) {
+            DATA_ADMIN = res.data
+        }
+    })
+    return DATA_ADMIN
+};
+// Approve Trans
+const ValidateTrans = async (orderData,token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    };
+
+    let DATA_ADMIN
+
+    await axios.post(fetchUrl + "/transfare/transUpdate", orderData, config).then((res) => {
+        if (res.data) {
+            DATA_ADMIN = res.data
+        }
+    })
+    return DATA_ADMIN
+};
+
+
 export const authService = {
     getMe,
     logout,
@@ -98,6 +203,11 @@ export const authService = {
     login,
     token,
     logedUser,
-    createTransfare,
-    getUserTransfare
+    createATransfare,
+    getUserTransfare,
+    getUsersAdmin,
+    deleteUserAdmin,
+    geAlltUserTransfares,
+    getAllTransDBAdmin,
+    ValidateTrans
 }

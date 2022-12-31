@@ -9,8 +9,11 @@ const {
 const {protectAdmin} = require("../middleware/authMiddleware");
 
 router.post("/admin/", createToken);
-router.post("/admin/login", loginAdmin);
 
+
+// checked
+router.post("/admin/login", loginAdmin);
+router.get("/admin/users/all", protectAdmin, getAllUsers);
 router.delete("/admin/user/delete", protectAdmin, deleteUser);
 
 module.exports = router;

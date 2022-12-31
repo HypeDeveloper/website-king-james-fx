@@ -15,7 +15,7 @@ const { protect, protectAdmin } = require("../middleware/authMiddleware");
 router.get("/transfare/", protect, getAllTransfaresUser);
 router.post("/transfare/newTrans", protect, createTransfare);
 
-router.post("/transfare/transUpdate", protect, updateTransfareOrder);
+router.post("/transfare/transUpdate", protectAdmin, updateTransfareOrder);
 
 
 //   /transfare/admin

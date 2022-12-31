@@ -48,8 +48,6 @@ const AuthContextProvider = ({ children }) => {
                 setLoading(true)
             });
     };
-
-
     // Get User Details    
     const GetUser_DB = async () => {
         setLoading(true);
@@ -66,13 +64,27 @@ const AuthContextProvider = ({ children }) => {
         })
         return new_data
     }
-
     const GetUser_Transfares = async () => {
         setLoading(true);
         // Get Stored Token
         const storedToken = authService.logedUser().token
         let new_data
-        await authService.getUserTransfare(storedToken)
+        await authService.geAlltUserTransfares(storedToken)
+            .then((data) => {
+                if (data) {
+                    new_data = data
+                }
+            }).catch((err) => {
+                console.log(err);
+            })
+        return new_data
+    }
+    const createATransfare = async (data)=>{
+        setLoading(true);
+        // Get Stored Token
+        const storedToken = authService.logedUser().token
+        let new_data
+        await authService.createATransfare(storedToken)
             .then((data) => {
                 if (data) {
                     new_data = data
